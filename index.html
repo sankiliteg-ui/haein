@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Good Night Noobde</title>
+    <style>
+        :root {
+            --primary: #a855f7;
+            --secondary: #2dd4bf;
+            --bg: #070b14;
+            --glass: rgba(255, 255, 255, 0.05);
+        }
+
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Ambient background glow */
+        .glow {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.2) 0%, transparent 70%);
+            filter: blur(60px);
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        /* Image Box - Main Section */
+        .image-box {
+            background: var(--glass);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 25px;
+            backdrop-filter: blur(15px);
+            margin: 25px 0;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+        }
+
+        .image-box img {
+            width: 100%;
+            border-radius: 18px;
+            display: block;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .image-box p {
+            font-size: 1.2rem;
+            margin: 15px 0;
+            color: #ff7eb9;
+            font-weight: 600;
+        }
+
+        /* Video Section */
+        .video-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        .card {
+            background: var(--glass);
+            padding: 12px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .video-placeholder {
+            width: 100%;
+            aspect-ratio: 9/16;
+            background: #111827;
+            border-radius: 12px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        video { width: 100%; height: 100%; object-fit: cover; }
+
+        /* Buttons */
+        .btn {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border: none;
+            padding: 15px 20px;
+            color: white;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Message Styling */
+        .special-msg {
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 20px;
+            border: 1px dashed rgba(168, 85, 247, 0.5);
+        }
+
+        .hidden-content {
+            display: none;
+            margin-top: 15px;
+            color: #2dd4bf;
+            font-weight: bold;
+            animation: slideUp 0.8s ease;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="glow" style="top: -50px; right: -50px;"></div>
+
+    <div class="container">
+        <h1 style="color: #a855f7; font-size: 1.8rem;">RAM RAM MITTAR</h1>
+        
+        <div class="image-box">
+            <img id="displayImg" src="gd.jpg" alt="Waiting...">
+            <p id="statusText">kab si wait kar r hu 😭</p>
+            
+            <button class="btn" onclick="openMyImage()">Tuni promise kita tha ✨</button>
+        </div>
+
+        <div class="video-grid">
+            <div class="card">
+                <div class="video-placeholder"><video id="v1" src="hahah.mp4" playsinline></video></div>
+                <button class="btn" style="padding: 10px;" onclick="document.getElementById('v1').play()">FUNNY</button>
+            </div>
+            <div class="card">
+                <div class="video-placeholder"><video id="v2" src="miss.mp4" playsinline></video></div>
+                <button class="btn" style="padding: 10px;" onclick="document.getElementById('v2').play()">AI Vdo 🤖</button>
+            </div>
+        </div>
+
+        <div class="special-msg">
+            <p id="msgTitle" style="opacity: 0.8;">"Overthink mat kar, varna dimaag hang ho jayega..." 🤐</p>
+            <div id="secretNote" class="hidden-content">
+              Good morning 
+Block ho ke bhi sakoon mil gaya… lagta hai officially single ho gaya hoon
+            </div>
+        </div>
+
+        <footer style="margin-top: 30px; opacity: 0.2; font-size: 0.7rem;">Created for my special friend</footer>
+    </div>
+
+    <script>
+        function openMyImage() {
+            const img = document.getElementById('displayImg');
+            const text = document.getElementById('statusText');
+            const note = document.getElementById('secretNote');
+            const title = document.getElementById('msgTitle');
+
+            // 1. Apni image ka naam yahan likho (e.g., avinash.jpg)
+            img.style.opacity = '0';
+            
+            setTimeout(() => {
+                img.src = "your_image.jpg"; // <-- CHANGE THIS TO YOUR PHOTO NAME
+                img.style.opacity = '1';
+                text.innerHTML = "Aa gaya main! 😎";
+                text.style.color = "#2dd4bf";
+                
+                // Reveal the special message
+                note.style.display = 'block';
+                title.style.display = 'none';
+            }, 300);
+        }
+    </script>
+</body>
+</html>
